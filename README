@@ -33,13 +33,13 @@ quite small, typically 10K bytes for a category
 
 Example
 =======
-&lt;?php
+<?php
    $classifier = new NGramProfiles('etc/classifiers/ngrams.dat');
-   if( !$classifier-&gt;exists() ) {
-      $classifier-&gt;train('en_US', 'etc/data/english.raw');
-      $classifier-&gt;train('nl_NL', 'etc/data/dutch.raw');
-      $classifier-&gt;save();
+   if( !$classifier->exists() ) {
+      $classifier->train('en_US', 'etc/data/english.raw');
+      $classifier->train('nl_NL', 'etc/data/dutch.raw');
+      $classifier->save();
    } else {
-      $classifier-&gt;load();
+      $classifier->load();
    }
-   $classifier-&gt;predict('This is an english sentence.'); // 'en_US'
+   $classifier->predict('This is an english sentence.'); // 'en_US'
