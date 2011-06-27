@@ -1,22 +1,16 @@
 PHP Language Detection
 ======================
-A pure PHP implementation of language detection (of arbitrary text) based on n-gram profiles. It contains a pre-trained model that can recognize: dutch (nl), 
-english (en), german (de), french (fr), spanish (es), indonesian (id), japanese (jp) and portugese (pt) (the "twitter languages").
+A pure PHP implementation of language detection (of arbitrary text) based on n-gram profiles. It contains a pre-trained model that can recognize: dutch (nl), english (en), german (de), french (fr), spanish (es), indonesian (id), japanese (jp) and portugese (pt) (the "twitter languages").
 
 How does it work?
 =================
 The etc/ directory contains an paper that explains the algorithm behind the classifier. A small excerpt:
 
-We describe here an N-gram-based approach to text categorization that is tolerant of textual errors. The system is small, fast and robust. This system worked very 
-well for language classification, achieving in one test a 99.8% correct classification rate on Usenet newsgroup articles written in different languages. The system also
-worked reasonably well for classifying articles from a number of different computer-oriented newsgroups according to subject, achieving as high as an 80% correct 
-classification rate. There are also several obvious directions for improving the system's classification performance in those cases where it did not do as well.
+We describe here an N-gram-based approach to text categorization that is tolerant of textual errors. The system is small, fast and robust. This system worked very well for language classification, achieving in one test a 99.8% correct classification rate on Usenet newsgroup articles written in different languages. The system also worked reasonably well for classifying articles from a number of different computer-oriented newsgroups according to subject, achieving as high as an 80% correct classification rate. There are also several obvious directions for improving the system's classification performance in those cases where it did not do as well.
 
-The system is based on calculating and comparing profiles of N-gram frequencies. First, we use the system to compute profiles on training set data that represent the 
-various categories, e.g., language samples or newsgroup content samples. Then the system computes a profile for a particular document that is to be classified.
+The system is based on calculating and comparing profiles of N-gram frequencies. First, we use the system to compute profiles on training set data that represent the various categories, e.g., language samples or newsgroup content samples. Then the system computes a profile for a particular document that is to be classified.
 
-Finally, the system computes a distance measure between the document's profile and each of the category profiles. The system selects the category whose profile has the 
-smallest distance to the document's profile. The profiles involved are quite small, typically 10K bytes for a category
+Finally, the system computes a distance measure between the document's profile and each of the category profiles. The system selects the category whose profile has the smallest distance to the document's profile. The profiles involved are quite small, typically 10K bytes for a category
 
 Example
 =======
