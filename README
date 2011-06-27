@@ -10,23 +10,23 @@ The etc/ directory contains an paper that explains the algorithm behind the clas
 We describe here an N-gram-based approach to text categorization that is tolerant of textual errors. The system is small, fast and robust. This system worked very 
 well for language classification, achieving in one test a 99.8% correct classification rate on Usenet newsgroup articles written in different languages. The system also
 worked reasonably well for classifying articles from a number of different computer-oriented newsgroups according to subject, achieving as high as an 80% correct 
-classification rate. There are also several obvious directions for improving the system’s classification performance in those cases where it did not do as well.
+classification rate. There are also several obvious directions for improving the system's classification performance in those cases where it did not do as well.
 
 The system is based on calculating and comparing profiles of N-gram frequencies. First, we use the system to compute profiles on training set data that represent the 
 various categories, e.g., language samples or newsgroup content samples. Then the system computes a profile for a particular document that is to be classified.
 
-Finally, the system computes a distance measure between the document’s profile and each of the category profiles. The system selects the category whose profile has the 
-smallest distance to the document’s profile. The profiles involved are quite small, typically 10K bytes for a category
+Finally, the system computes a distance measure between the document's profile and each of the category profiles. The system selects the category whose profile has the 
+smallest distance to the document's profile. The profiles involved are quite small, typically 10K bytes for a category
 
 Example
 =======
-<?php
+&lt;?php
    $classifier = new NGramProfiles('etc/classifiers/ngrams.dat');
-   if( !$classifier->exists() ) {
-      $classifier->train('en_US', 'etc/data/english.raw');
-      $classifier->train('nl_NL', 'etc/data/dutch.raw');
-      $classifier->save();
+   if( !$classifier-&gt;exists() ) {
+      $classifier-&gt;train('en_US', 'etc/data/english.raw');
+      $classifier-&gt;train('nl_NL', 'etc/data/dutch.raw');
+      $classifier-&gt;save();
    } else {
-      $classifier->load();
+      $classifier-&gt;load();
    }
-   $classifier->predict('This is an english sentence.'); // 'en_US'
+   $classifier-&gt;predict('This is an english sentence.'); // 'en_US'
