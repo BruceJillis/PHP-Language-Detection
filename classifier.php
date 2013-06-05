@@ -22,10 +22,10 @@
 	
 		// load classifier from disk
 		function load() {
-			if( !$this->exists() ) 
+			if( !$this->exists() ) {
 				throw new Exception("Classifier->load '{$this->file}' does not exist!"); 
+			}
 			$data = file_get_contents($this->file);
-			//$data = gzuncompress($data);
 			$this->state = unserialize($data);
 		}
 		
@@ -54,6 +54,7 @@
 			$data = preg_replace("/[^a-zA-Z\s]/", "", $data);
 			$words = str_word_count(strtolower($data), 1);
 			$ngrams = array();
+			// split words into ngramgs
 			foreach($words as $word) {
 				$word = $word;
 				$length = strlen($word);
@@ -66,8 +67,10 @@
 					}
 				}
 			}
+			// determine ngram frequency counts
 			$frequencies = array_count_values($ngrams); 
 			arsort($frequencies); 
+			// throw away all but the top 750 most frequently occuring ngrams
 			$frequencies = array_slice($frequencies, 0, $max_ngs); 
 			return $frequencies;
 		}
